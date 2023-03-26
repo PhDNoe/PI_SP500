@@ -3,3 +3,7 @@
 
 # All tickers, ignore 265MB
 /EDA/data/all_tickers/*
+
+
+# Ignore all __pycache__ folders
+**/__pycache__/
