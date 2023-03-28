@@ -9,7 +9,7 @@ st.markdown("### Empresa solicitante: :blue[Ficticia Conservadora (F.C)]")
 st.markdown("---")
 st.markdown("#### La empresa Ficticia Conservadora  ha solicitado una recomendación de cartera de inversión.")
 a = """
-> * La empresa, una startup en crecimiento, desea invertir un capital excente.
+> * La empresa, una startup en crecimiento, desea invertir un capital excedente.
 > * Acepta correr un riesgo mínimo a cambio de una tasa de retorno superior a la tasa de inflación
 de Estados Unidos de los ultimos 5 años.
 > * Su horizonte de inversión es a mediano/largo plazo, con una estancia mínima de 2 años.
