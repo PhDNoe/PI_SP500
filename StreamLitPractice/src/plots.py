@@ -99,9 +99,9 @@ def plot_company_or_spy_or_both(plt_company, ticker, sp500_short, spy_short, plt
 
 
     if plt_company and ticker!="Only SPY":
-        print(sp500_short.head())
+        # print(sp500_short.head())
         df_short = sp500_short[["Date", ticker]]
-        print(df_short.tail())
+        # print(df_short.tail())
 
         g2 = sns.lineplot(x="Date",y=ticker, data=sp500_short, ax=ax, label="Ticker: "+ticker)
         if not plt_sp500:
@@ -171,7 +171,7 @@ def plot_zoom_crisis(ticker, crisis_opt, spy, sp500_companies, crisis_dict, cris
     """
 
     
-    print("Tciker --> ", ticker)
+    # print("Tciker --> ", ticker)
     if plt_zoom:
         date_dict = crisis_dict()
         crisis_options = crisis_options()
@@ -187,7 +187,7 @@ def plot_zoom_crisis(ticker, crisis_opt, spy, sp500_companies, crisis_dict, cris
 
         if plt_company and ticker!="Only SPY":
             comp_filter = sp500_companies.loc[~sp500_companies[ticker].isna(),["Date",ticker]]
-            print("head --> ", comp_filter.head())
+            # print("head --> ", comp_filter.head())
             comp_filter = comp_filter[comp_filter['Date'].between(date_dict[crisis_opt][0],date_dict[crisis_opt][1])]
             # comp_fiter = sp500_companies[sp500_companies['Date'].between(date_dict[crisis_opt][0],date_dict[crisis_opt][1]),[]]
             g2 = sns.lineplot(x="Date", y=ticker, data=comp_filter, ax = ax, label=ticker)

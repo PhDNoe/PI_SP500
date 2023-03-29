@@ -7,13 +7,15 @@ import matplotlib.pyplot as plt
 
 
 
-def highlight_columns(df, rows=10, color='lightgreen', columns_to_shadow=[], columns_to_show=[]):
+def highlight_columns(df, rows=10, color='lightgreen', columns_to_shadow=[], columns_to_show=[], color_n_rows=10):
     highlight = lambda slice_of_df: 'background-color: %s' % color
     sample_df = df.head(rows)
     if len(columns_to_show) != 0:
         sample_df = sample_df[columns_to_show]
-    highlighted_df = sample_df.style.applymap(highlight, subset=pd.IndexSlice[:5, columns_to_shadow])
+    highlighted_df = sample_df.style.applymap(highlight, subset=pd.IndexSlice[:color_n_rows, columns_to_shadow])
     return highlighted_df
+
+
 
 def load_inflation(path):
     inflation = pd.read_csv('./data/Inflation_usa.csv')
@@ -22,7 +24,9 @@ def load_inflation(path):
     inflation = inflation[['Year', 'Ave', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']]
     return inflation
 
-def inflation_container():
+
+
+def inflation_container(color_n_rows):
     inflation = load_inflation('./data/Inflation_usa.csv')
     cols = inflation.columns
     cola, colb, colc = st.columns([1,4,1])
@@ -30,25 +34,89 @@ def inflation_container():
 
     with col1:
         st.markdown("#### Datos de la inflación de Estados Unidos")
-        st.write(highlight_columns(inflation, rows=10, color='yellow', columns_to_shadow=['Ave'], columns_to_show=cols))
+        st.write(highlight_columns(inflation, rows=24, color='yellow', columns_to_shadow=['Ave'], columns_to_show=cols, color_n_rows=color_n_rows))
         st.caption("Tabla 1: En amarillo se indica la inflación promedio de los últimos 5 años")
 
-    promedio = round(inflation['Ave'].iloc[1:6].mean(),2)
-    acumulada = round(inflation['Ave'].iloc[1:6].sum(),2)
-    variacion = (inflation['Ave'].iloc[1]-inflation['Ave'].iloc[2])
-    h1 = "Promedio de la inflación de los últimos 5 años"
-    h2 = """Suma acumulativa de la inflación de los últimos 5 años. 
-    La variación se calcula como --> variacion_ultimo_período_completo [%] - Variación_período_anterior [%]
-    siendo el período 1 año"""
+    
+    if color_n_rows==1:
+        h1 = "Promedio de la inflación del último año"
+        h2 = """Suma acumulativa de la inflación del último año."""
+        promedio = round(inflation['Ave'].iloc[1],2)
+        acumulada = round(inflation['Ave'].iloc[1],2)
+        variacion = (inflation['Ave'].iloc[1]-inflation['Ave'].iloc[2])
+    else:
+        h1 = "Promedio de la inflación de los últimos 5 años"
+        h2 = f" Suma acumulativa de la inflación de los últimos {color_n_rows} años." 
+        promedio = round(inflation['Ave'].iloc[1:color_n_rows].mean(),2)
+        acumulada = round(inflation['Ave'].iloc[1:color_n_rows].sum(),2)
+        variacion = (inflation['Ave'].iloc[1]-inflation['Ave'].iloc[2])
+        
+    h3="""La variación se calcula como --> variacion_ultimo_período_completo [%] - Variación_período_anterior [%]
+        siendo el período 1 año"""
     st.markdown('---')
 
 
     with colb:
         colb1, colb2 = st.columns([1,1])
         with colb1:
-            st.metric("Inflación promedio 5 años", str(promedio)+" %", help=h1)
+            if color_n_rows==1:
+                st.metric("Inflación promedio último año", str(promedio)+" %", help=h1)
+            else:
+                st.metric(f"Inflación promedio últimos {color_n_rows} años", str(promedio)+" %", help=h1)
         with colb2:
-            st.metric("Inflación acumulada 5 años", str(acumulada)+" %", variacion, help=h2)
+            if color_n_rows==1:
+                st.metric("Inflación acumulada último año", str(acumulada)+" %", variacion, help=h2)
+            else:
+                st.metric(f"Inflación acumulada últimos {color_n_rows} años", str(acumulada)+" %", variacion, help=h2)
+        st.caption("Nota: "+h3)
+
+
+def inflation_table(color_n_rows):
+    inflation = load_inflation('./data/Inflation_usa.csv')
+    cols = inflation.columns
+    st.markdown("#### Datos de la inflación de Estados Unidos")
+    st.write(highlight_columns(inflation, rows=24, color='yellow', columns_to_shadow=['Ave'], columns_to_show=cols, color_n_rows=color_n_rows))
+    st.caption("Tabla 1: En amarillo se indica la inflación promedio de los últimos 5 años")
+
+    
+def inflation_metrics(color_n_rows):
+    inflation = load_inflation('./data/Inflation_usa.csv')
+    cols = inflation.columns
+    cola, colb, colc = st.columns([1,4,1])
+    
+
+
+    if color_n_rows==1:
+        h1 = "Promedio de la inflación del último año"
+        h2 = """Suma acumulativa de la inflación del último año."""
+        promedio = round(inflation['Ave'].iloc[1],2)
+        acumulada = round(inflation['Ave'].iloc[1],2)
+        variacion = (inflation['Ave'].iloc[1]-inflation['Ave'].iloc[2])
+    else:
+        h1 = "Promedio de la inflación de los últimos 5 años"
+        h2 = f" Suma acumulativa de la inflación de los últimos {color_n_rows} años." 
+        promedio = round(inflation['Ave'].iloc[1:color_n_rows].mean(),2)
+        acumulada = round(inflation['Ave'].iloc[1:color_n_rows].sum(),2)
+        variacion = (inflation['Ave'].iloc[1]-inflation['Ave'].iloc[2])
+        
+    h3="""La variación se calcula como --> variacion_ultimo_período_completo [%] - Variación_período_anterior [%]
+        siendo el período 1 año"""
+    # st.markdown('---')
+
+
+    with colb:
+        colb1, colb2 = st.columns([1,1])
+        with colb1:
+            if color_n_rows==1:
+                st.metric("Inflación promedio último año", str(promedio)+" %", help=h1)
+            else:
+                st.metric(f"Inflación promedio últimos {color_n_rows} años", str(promedio)+" %", help=h1)
+        with colb2:
+            if color_n_rows==1:
+                st.metric("Inflación acumulada último año", str(acumulada)+" %", variacion, help=h2)
+            else:
+                st.metric(f"Inflación acumulada últimos {color_n_rows} años", str(acumulada)+" %", variacion, help=h2)
+        # st.caption("Nota: "+h3)
 
 
 
@@ -69,6 +137,7 @@ def sector_opt(companies):
     return option
 
 
+
 def plot_sector_vs_spy(sector_dfs, sect_opt, spy_close):
     fig, ax = plt.subplots()
     sns.lineplot(x="Date", y="mean", data=sector_dfs[sect_opt],ax=ax, label="Average of "+sect_opt)
@@ -76,6 +145,8 @@ def plot_sector_vs_spy(sector_dfs, sect_opt, spy_close):
     ax.set(title="Evolución del SP500 vs sector "+sect_opt, xlabel="Fecha", ylabel="Precio")
     ax.tick_params(axis='x', labelrotation=45)
     st.pyplot(fig)
+
+
 
 
 def plot_sector_vs_spy_delta(spy_close, sector_dfs, sect_opt):
@@ -119,6 +190,7 @@ def get_metrics(spy_close,sector_dfs, sect_opt):
     return (ini_value_spy, fin_value_spy, delta_p_spy ), (ini_value, fin_value, delta_p)
 
 
+
 def show_sector_metrics(fin_value_spy, delta_p_spy, fin_value, delta_p, sect_opt) :
 
     colp1, colp2 = st.columns([1,1])
@@ -136,6 +208,7 @@ def show_sector_metrics(fin_value_spy, delta_p_spy, fin_value, delta_p, sect_opt
         st.metric(f"{sect_opt} (promedio)", str(round(fin_value,2)) +" u$s", str(delta_p)+" %")
         st.markdown('---')
         
+
 
 def sector_container(companies, sector_dfs, spy_close):
 
@@ -184,3 +257,64 @@ def load_dataframes():
    
 
     return df, companies, spy, sector, spy_close, sector_dfs
+
+
+def date_filter_opt():
+    """"
+    Retorna un menu desplegable con posibles rangos de fechas
+    """
+    fechas = ["Último año", "Últimos 5 años", "Últimos 10 años", "Últimos 15 años", "Últimos 23 años"]
+    msg = "Seleccione rango de fechas"
+
+
+
+    option = st.selectbox(
+    msg,
+    fechas)
+
+    return option
+
+
+def get_n_rows(date_filter_opt):
+    
+    date_opt = {
+        "Último año":1
+        , "Últimos 5 años":5
+        , "Últimos 10 años":10
+        , "Últimos 15 años":15
+        , "Últimos 23 años":23
+
+    }
+
+    return date_opt[date_filter_opt]
+
+
+
+def shorten_df(df, companies, spy, sector, spy_close, sector_dfs,  date_opt):
+    ### Nota: esta todo hecho contando como fecha de cuenta del año, diciembre 2022.
+    ### Es un poco mas de 1 año    
+    fecha_fin = spy_close['Date'].iloc[-1].strftime("%Y-%m-%d")
+    if date_opt=="Último año":
+        fecha_ini = "2021-12-31"
+    elif date_opt=="Últimos 5 años":
+        fecha_ini = "2017-12-31"
+    elif date_opt=="Últimos 10 años":
+        fecha_ini = "2012-12-31"
+    elif date_opt=="Últimos 15 años":
+        fecha_ini = "2007-12-31"
+    elif date_opt=="Últimos 23 años":
+        fecha_ini = "2000-01-01"
+    else:
+        fecha_ini = "2000-01-01"
+
+
+    df_short = df[df['Date'].between(fecha_ini, fecha_fin)]
+    spy_close_short = spy_close[spy_close['Date'].between(fecha_ini, fecha_fin)]
+    
+    sector_dfs_short = {}
+    for s in sector:
+        sector_dfs_short[s] = sector_dfs[s][sector_dfs[s]['Date'].between(fecha_ini, fecha_fin)]
+
+    return df_short, spy_close_short, sector_dfs_short
+    
+    

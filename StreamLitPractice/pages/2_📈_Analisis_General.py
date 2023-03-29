@@ -120,11 +120,3 @@ with cont_inner_1:
 
 
 
-# st.markdown("---")
-# st.write('spy["Date"].min() --> ', spy["Date"].min())
-# st.write('spy["Date"].max() --> ', spy["Date"].max())
-
-# st.markdown("---")
-# st.write('spy_short["Date"].min() --> ', spy_short["Date"].min())
-# st.write('spy_short["Date"].max() --> ', spy_short["Date"].max())
-# st.markdown("---")

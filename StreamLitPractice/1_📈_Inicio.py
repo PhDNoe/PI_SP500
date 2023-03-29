@@ -33,13 +33,24 @@ los últimos 23 años y de las compañías que lo componen.
 """
 
 c="""
-* 📈 :violet[Análisis descriptivo y estadístico de las compañias recomendadas:] Dashboard interactivo mostrando la evolución de los últimos 
-5 años de los distintos sectores y de las empresas pre-seleccionadas
+* 📈 :violet[Análisis descriptivo y estadístico por sectores:] Dashboard interactivo mostrando la evolución de los últimos 
+23 años de los distintos sectores
     - 🗓  Filtro de fechas
-    - 📈 Análisis fundamental
+    - 📈 Datos de inflación anual y acumulada
 """
 
-d = """
+
+d="""
+* 📈 :violet[Análisis descriptivo y estadístico de las empresas seleccionadas:] Dashboard interactivo mostrando la evolución de los últimos 
+5 años de las distintas empresas
+    - 📈 Ganancia porcentual por empresa
+    - 📈 Datos de inflación anual y acumulada
+    - 📈 Fundamentales de las empresas
+    
+"""
+
+
+e = """
 
 * 📈 :violet[Análisis técnico de las compañias recomendadas]: Dashboard interactivo mostrando los principales 
 indicadores técnicos para analizar posibles zonas de compra.
@@ -47,12 +58,23 @@ indicadores técnicos para analizar posibles zonas de compra.
     Indicadores disponibles:
     - 📉 Medias moviles de 50 y 100 días
     - 📉 Índice de fuerza relativa (RSI)
-    - 📉 Nube Ichimoku
+
+
+"""
+
+
+
+f = """
+
+* 📈 :violet[Conclusiones y recomendación final]:
+
 
 """
 
 st.markdown(b)
 st.markdown(c)
 st.markdown(d)
+st.markdown(e)
+st.markdown(f)
 st.markdown('---')
 
