@@ -5,6 +5,9 @@
 ### Deploy: 
 https://phdnoe-pi-sp500-deploy-1--inicio-12m0fj.streamlit.app/
 
+### Investigación de mercado e historia:
+https://camiseta-blanca-poison.notion.site/Proyecto-Individual-N-2-5bacbbb1132a484c9091fa878e1eb2b5
+
 ![divider](https://user-images.githubusercontent.com/7065401/52071927-c1cd7100-2562-11e9-908a-dde91ba14e59.png)
 
 # 📈 Factibilidad de cartera de inversión
@@ -31,11 +34,12 @@ de Estados Unidos de los ultimos 5 años.
 
 ### 📈 Análisis general
 Dashboard interactivo mostrando evolución del índice S&P500 durante los últimos 23 años y de las compañías que lo componen.
-    - 🗓 Fitros de fechas
-    - 🫧 Indicadores gráficos de 3 crisis económicas:
-        - 🌐 Burbuja dot com  
-        - 🏠 Burbuja de hipotecas subprime
-        - 🦠 Pandemia Covid-19  
+
+- 🗓 Fitros de fechas
+- 🫧 Indicadores gráficos de 3 crisis económicas:
+    - 🌐 Burbuja dot com  
+    - 🏠 Burbuja de hipotecas subprime
+    - 🦠 Pandemia Covid-19  
 
 <img src ="./img/general.png" width="500px">
 
@@ -43,8 +47,8 @@ Dashboard interactivo mostrando evolución del índice S&P500 durante los últim
 
 ### 📈 Análisis descriptivo y estadístico por sectores
 Dashboard interactivo mostrando la evolución de los últimos 23 años de los distintos sectores
-    - 🗓  Filtro de fechas
-    - 📈 Datos de inflación anual y acumulada
+- 🗓  Filtro de fechas
+- 📈 Datos de inflación anual y acumulada
 
 <img src ="./img/sector.png" width="500px">
 
@@ -52,9 +56,9 @@ Dashboard interactivo mostrando la evolución de los últimos 23 años de los di
 
 ### 📈 Análisis descriptivo y estadístico de las empresas seleccionadas
 Dashboard interactivo mostrando la evolución de los últimos 5 años de las distintas empresas
-    - 📈 Ganancia porcentual por empresa
-    - 📈 Datos de inflación anual y acumulada
-    - 📈 Fundamentales de las empresas
+- 📈 Ganancia porcentual por empresa
+- 📈 Datos de inflación anual y acumulada
+- 📈 Fundamentales de las empresas
     
 <img src ="./img/empresas.png" width="500px">
 
