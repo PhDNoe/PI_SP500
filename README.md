@@ -83,6 +83,9 @@ La recomendación final es armar una cartera equilibrada con aquellas acciones (
 
 - Superar el porcentaje de inflación acumulado de los últimos 5 años
 - Superar el porcentaje promedio del sp500 de los ultimos 5 años
+- Porcentaje de ganancia Promedio > 50% (KPI)
+- Capitalización de Mercado > 50B U$S  (KPI)
+- PER (price to earnings ratio) > 15   (KPI)
 
 
 Se recomienda esperar una señal clara de compra para las siguientes acciones:

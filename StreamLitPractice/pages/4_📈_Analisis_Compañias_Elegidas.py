@@ -29,7 +29,9 @@ def show_fundamentales(company_opt):
     my_dict = {
         'Colgate-Palmolive': """Colgate-Palmolive Company is a consumer products company that markets 
         its products throughout the world. 
-        The Company's products include toothpaste, toothbrushes, shampoos, deodorants, bar and liquid soaps, dishwashing liquid, and laundry products, as well as pet nutrition products for cats and dogs."""
+        The Company's products include toothpaste, toothbrushes, shampoos, deodorants, bar and liquid soaps, dishwashing liquid, and laundry products, as well as pet nutrition products for cats and dogs.
+        
+        """
         , "Costco":"""Costco Wholesale Corporation is a membership warehouse club The Company sells all kinds of food, automotive supplies, toys, hardware, sporting goods, jewelry, electronics, apparel, health, and beauty aids, as well as other goods. Costco Wholesale serves customers worldwide."""
         , "General Mills":"""General Mills, Inc. operates as a food company. The Company manufactures and markets branded consumer foods. General Mills serves customers worldwide."""
         , "Hershey's":"""The Hershey Company manufactures chocolate and sugar confectionery products. The Company's principal products includes chocolate and sugar confectionery products, gum and mint refreshment products, and pantry items, such as baking ingredients, toppings, and beverages."""
