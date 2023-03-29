@@ -2,6 +2,11 @@
 
 # **Proyecto de Noelia**  👻
 
+### Deploy: 
+https://phdnoe-pi-sp500-deploy-1--inicio-12m0fj.streamlit.app/
+
+![divider](https://user-images.githubusercontent.com/7065401/52071927-c1cd7100-2562-11e9-908a-dde91ba14e59.png)
+
 # 📈 Factibilidad de cartera de inversión
 
 ![divider](https://user-images.githubusercontent.com/7065401/52071927-c1cd7100-2562-11e9-908a-dde91ba14e59.png)
@@ -99,3 +104,7 @@ Debido a que superan el margen de ganancia general del S&P500, y ademas han most
 > Si tienen confianza en el mundo crypto, pueden esperar en un stacking flexible con alguna stablecoin tipo USDT o similar.
 
 ![divider](https://user-images.githubusercontent.com/7065401/52071927-c1cd7100-2562-11e9-908a-dde91ba14e59.png)
+
+
+
+---
